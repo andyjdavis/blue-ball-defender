@@ -3,6 +3,17 @@ from pygame.locals import *
 
 import random
 
+dirty_rects = []
+def clear_dirty_rects():
+    global dirty_rects
+    dirty_rects = []
+
+def add_dirty_rect(r):
+    dirty_rects.append(r)
+
+def get_dirty_rects():
+    return dirty_rects
+
 def distance(p1, p2):
     xdiff = p1[0] - p2[0]
     ydiff = p1[1] - p2[1]

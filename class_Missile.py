@@ -44,9 +44,7 @@ class Missile(MySprite):
         self.image.fill(self.background_color)
         pygame.draw.circle(self.image, self.color, (self._radius, self._radius), self.currentradius)
         
-        #DEBUG
-        #pygame.draw.circle(self.image, (0,255,0), (0, 0), 1)
-        #pygame.draw.circle(self.image, (0,255,0), (self._radius*2, self._radius*2), 1)
+        add_dirty_rect(self.rect)
         
     def explode(self):
         if self.state == MissileState.FLYING:

@@ -82,6 +82,8 @@ def new_game():
     
     change_state(State.INGAME)
     starttime = pygame.time.get_ticks()
+    
+    add_dirty_rect(screen.get_rect())
 
 def click(pos):
     if state == State.PREGAME or state == State.ENDGAME:
@@ -121,6 +123,7 @@ def display_pregame_splash(screen):
     
     splash_dest_rect = pygame.Rect((settings.width/2) - (settings.splash_size[0]/2), (settings.height/2) - (settings.splash_size[1]/2), settings.splash_size[0], settings.splash_size[1])
     screen.blit(pregame_splash, splash_dest_rect)
+    add_dirty_rect(splash_dest_rect)
 
 def display_endgame_splash(screen):
     global endgame_splash
@@ -141,6 +144,7 @@ def display_endgame_splash(screen):
     
     splash_dest_rect = pygame.Rect((settings.width/2) - (settings.splash_size[0]/2), (settings.height/2) - (settings.splash_size[1]/2), settings.splash_size[0], settings.splash_size[1])
     screen.blit(endgame_splash, splash_dest_rect)
+    add_dirty_rect(splash_dest_rect)
 
 def calc_time():
     return (currenttime - starttime) // 1000
@@ -161,6 +165,7 @@ def main():
         bg.set_at((int(x), int(y)), (255,255,255))
     
     change_state(State.PREGAME)
+    add_dirty_rect(screen.get_rect())
     
     clock = pygame.time.Clock()
     
@@ -212,7 +217,8 @@ def main():
             elif state == State.ENDGAME:
                 display_endgame_splash(screen)
         
-        pygame.display.flip()
+        pygame.display.update(get_dirty_rects())
+        clear_dirty_rects()
 
 if __name__ == '__main__': main()
 
