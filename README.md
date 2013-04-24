@@ -11,4 +11,6 @@ They are available from http://opengameart.org/content/big-explosion and http://
 
 The music is by DST and is available from http://www.nosoapradio.us
 
+The planet image is by Moreau Guillaume and is available from http://opengameart.org/content/planet-solar-system
+
 See the file main.py for software license information.
