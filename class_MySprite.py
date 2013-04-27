@@ -21,7 +21,6 @@ class MySprite(pygame.sprite.Sprite):
         self._pos[1] += self._vel[1] * dt
         
         if self.is_offscreen():
-            print 'offscreen'
             self.kill()
     
     def is_offscreen(self):
